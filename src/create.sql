@@ -9,7 +9,9 @@ create table Shop_Type
 create table Address
 (
     ID   serial primary key,
-    Name varchar(100) not null
+    Name varchar(100) not null,
+    City varchar(50) not null,
+    Phone varchar(11) not null
 );
 
 --Информация о магазине(3)
@@ -73,8 +75,7 @@ create table Board_Game
     Weight              integer check ( Weight > 0 )                                           not null,
     Wishlist            integer check (Board_Game.Wishlist >= 0)                               not null,
     Own                 integer check (Own >= 0)                                               not null,
-    Publisher           integer references Game_Publisher on delete restrict on update cascade not null,
-    Theme_ID            integer references Game_Theme on delete restrict on update cascade     not null
+    Publisher           integer references Game_Publisher on delete restrict on update cascade not null
 );
 
 --Связь-Игра-Категория(9)
@@ -96,7 +97,6 @@ create table User_Role
 create table Users
 (
     ID              serial primary key,
-    Favorite_Forums integer,
     Login           varchar(20)                                                       not null,
     Hashed_Password varchar(16)                                                       not null,
     Mail            varchar(320)                                                      not null,
@@ -104,6 +104,7 @@ create table Users
     Salt            varchar(15)                                                       not null,
     User_Role       integer references User_Role on delete restrict on update cascade not null
 );
+
 --Комментарии к игре(10)
 create table Game_Comment
 (
@@ -137,7 +138,7 @@ create table Topic_Comment
     Forum_ID integer references Forum_Topic on delete restrict on update cascade not null,
     User_ID  integer references Users on delete restrict on update cascade        not null,
     Date     timestamp default current_timestamp                                  not null,
-    Context  text                                                                 not null
+    Content  text                                                                 not null
 );
 
 --Ассоциация-Корзина-Игра(15)
@@ -145,7 +146,7 @@ create table Carts_of_Users
 (
     User_ID     integer references Users on delete restrict on update cascade      not null,
     Game_ID     integer references Board_Game on delete restrict on update cascade not null,
-    Date_of_add timestamp default current_timestamp,
+    Date_of_add timestamp default current_timestamp not null,
     Date_of_buy timestamp,
     primary key (User_ID, Game_ID)
 );
@@ -155,7 +156,7 @@ create table Favorites_of_Users
 (
     User_ID     integer references Users on delete restrict on update cascade      not null,
     Game_ID     integer references Board_Game on delete restrict on update cascade not null,
-    Date_of_add timestamp default current_timestamp
+    Date_of_add timestamp default current_timestamp not null
 );
 
 --Связь-Пользователи-Темы(18)
