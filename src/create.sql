@@ -86,14 +86,14 @@ create table Game_to_Theme
     primary key (Board_ID, Theme_ID)
 );
 
---Роль Пользователя(14)
+--Роль Пользователя(10)
 create table User_Role
 (
     ID   serial primary key,
     Name varchar(20) not null
 );
 
---Пользователь(10)
+--Пользователь(11)
 create table Users
 (
     ID              serial primary key,
@@ -105,7 +105,7 @@ create table Users
     User_Role       integer references User_Role on delete restrict on update cascade not null
 );
 
---Комментарии к игре(10)
+--Комментарии к игре(12)
 create table Game_Comment
 (
     ID      serial primary key,
@@ -115,7 +115,7 @@ create table Game_Comment
     Content text                                                               not null
 );
 
---Сущность-Игра-магазин(11)
+--Сущность-Игра-магазин(13)
 create table Game_to_Shop
 (
     Game_ID integer references Board_Game on delete restrict on update cascade not null,
@@ -124,14 +124,14 @@ create table Game_to_Shop
     primary key (Game_ID, Shop_ID)
 );
 
---Тема Форума(12)
+--Тема Форума(14)
 create table Forum_Topic
 (
     ID   serial primary key,
     Name varchar(100) not null
 );
 
---Комментарии темы(13)
+--Комментарии темы(15)
 create table Topic_Comment
 (
     ID       serial primary key,
@@ -141,7 +141,7 @@ create table Topic_Comment
     Content  text                                                                 not null
 );
 
---Ассоциация-Корзина-Игра(15)
+--Ассоциация-Корзина-Игра(16)
 create table Carts_of_Users
 (
     User_ID     integer references Users on delete restrict on update cascade      not null,
@@ -151,7 +151,7 @@ create table Carts_of_Users
     primary key (User_ID, Game_ID)
 );
 
---Ассоциация-Фавориты-Игры(16)
+--Ассоциация-Фавориты-Игры(17)
 create table Favorites_of_Users
 (
     User_ID     integer references Users on delete restrict on update cascade      not null,
