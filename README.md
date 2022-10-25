@@ -41,7 +41,6 @@ Board_Game ||--o{ Favorites_of_Users : Game_ID
     integer Wishlist  
     integer Own   
     integer Publisher
-    integer Theme_ID
     }
     Users ||--o{ Favorites_of_Users : User_ID
     Favorites_of_Users {
@@ -92,7 +91,7 @@ Board_Game ||--o{ Favorites_of_Users : Game_ID
     varchar Name
     }
     Game_Theme ||--o{ Game_to_Theme : Theme_ID
-    Board_Game ||--o{ Game_to_Theme : Board_ID
+    Board_Game ||--o{ Game_to_Theme : Game_ID
     Game_Theme {
     serial ID
     varchar Name
