@@ -1,3 +1,4 @@
+--Создать все таблицы
 --Имя магазина(1)
 create table Shop_Type
 (
@@ -11,7 +12,7 @@ create table Address
     ID   serial primary key,
     Name varchar(100) not null,
     City varchar(50) not null,
-    Phone varchar(11) not null
+    Phone varchar(40) not null
 );
 
 --Информация о магазине(3)

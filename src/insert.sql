@@ -1,3 +1,4 @@
+--Заполнить таблицы данными
 insert into Shop_Type (Name)
 values ('Стандартный'), ('VIP');
 
@@ -18,7 +19,7 @@ values ('GaGa', 1, 1),
        ('GaGa', 2, 1),
        ('GaGa', 3, 1),
        ('GaGa', 4, 1),
-       ('GaGa', 5, 1)
+       ('GaGa', 5, 1),
        ('Республика', 6, 2),
        ('Республика', 7, 2),
        ('Республика', 8, 2),
@@ -83,7 +84,7 @@ values ('Обычный'),
 insert into Users
 values (1, 'ana.mrzv', 'd3ad1ns1d3666666', 'test@mail.ru', true, 'h0wt0d011ph3lp!', 2),
        (2, 'dasxunya', 'd3s1gn3rd4sh4666', 'test2@mail.ru', false, 'h0wt0d011ph3lp?', 2),
-       (3, 'yuko', '1w0ntt3lluh0wxex', 'yuko@mail.ru', true, 'aoaoaoaoaoaoaoa', 1)
+       (3, 'yuko', '1w0ntt3lluh0wxex', 'yuko@mail.ru', true, 'aoaoaoaoaoaoaoa', 1),
        (4, 'serge', 'xicpwndyjhget666', 'serge@mail.ru', true, 'qwertyuiopasdfg', 1);
 
 insert into Game_Comment (Game_ID, User_ID, Content)
@@ -104,15 +105,15 @@ values (1, 4, 'Сам задаюсь этим вопросом....'),
        (2, 3, 'Разработанная им самим');
 
 insert into Carts_of_Users (User_ID, Game_ID)
-values (3, 1)
+values (3, 1),
        (4, 2);
 
-insert into Favourites_of_Users (User_ID, Game_ID)
-values (3, 2)
+insert into Favorites_of_Users (User_ID, Game_ID)
+values (3, 2),
        (4, 1),
        (4, 2);
 
-insert into Users_Fav_Forums (User_ID, Game_ID)
+insert into Users_Fav_Forums (User_ID, Forum_ID)
 values (3, 1),
        (3, 2),
        (4, 1),
