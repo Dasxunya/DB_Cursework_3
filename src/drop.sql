@@ -1,37 +1,37 @@
 --Удаление всех таблиц БД
+DROP TABLE "users_fav_forums";
 
-DROP TABLE "shop_type" CASCADE;
+DROP TABLE "topic_comment";
 
-DROP TABLE "address" CASCADE;
+DROP TABLE "forum_topic";
 
-DROP TABLE "shop" CASCADE;
+DROP TABLE "favorites_of_users";
 
-DROP TABLE "game_genre" CASCADE;
+DROP TABLE "game_to_theme";
 
-DROP TABLE "game_theme" CASCADE;
+DROP TABLE "game_to_shop";
 
-DROP TABLE "game_mechanics" CASCADE;
+DROP TABLE "shop";
 
-DROP TABLE "game_publisher" CASCADE;
+DROP TABLE "shop_type";
 
-DROP TABLE "board_game" CASCADE;
+DROP TABLE "address";
 
-DROP TABLE "game_to_theme" CASCADE;
+DROP TABLE "game_theme";
 
-DROP TABLE "user_role" CASCADE;
+DROP TABLE "carts_of_users";
 
-DROP TABLE "users" CASCADE;
+DROP TABLE "game_comment";
 
-DROP TABLE "game_comment" CASCADE;
+DROP TABLE "users";
 
-DROP TABLE "game_to_shop" CASCADE;
+DROP TABLE "user_role";
 
-DROP TABLE "forum_topic" CASCADE;
+DROP TABLE "board_game";
 
-DROP TABLE "topic_comment" CASCADE;
+DROP TABLE "game_publisher";
 
-DROP TABLE "carts_of_users" CASCADE;
+DROP TABLE "game_genre";
 
-DROP TABLE "favorites_of_users" CASCADE;
+DROP TABLE "game_mechanics";
 
-DROP TABLE "users_fav_forums" CASCADE;
