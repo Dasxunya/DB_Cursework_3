@@ -34,4 +34,3 @@ DROP TABLE "game_publisher";
 DROP TABLE "game_genre";
 
 DROP TABLE "game_mechanics";
-
