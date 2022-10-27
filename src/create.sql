@@ -150,7 +150,8 @@ create table Favorites_of_Users
 (
     User_ID     integer references Users on delete restrict on update cascade      not null,
     Game_ID     integer references Board_Game on delete restrict on update cascade not null,
-    Date_of_add timestamp default current_timestamp not null
+    Date_of_add timestamp default current_timestamp not null,
+    primary key (User_ID, Game_ID)
 );
 
 --Связь-Пользователи-Темы(17)
