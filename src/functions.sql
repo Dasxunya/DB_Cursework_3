@@ -1,17 +1,24 @@
---TODO: Оно хотело бы жить, но пока не может
-CREATE OR REPLACE FUNCTION LovedForums() RETURNS TRIGGER AS
-$$
+--Подсчет количества различных игр на сайте
+create or replace function different_board_count() returns integer as $$
+declare
+    cnt integer;
 begin
-    if (select count(forum_id) from users_fav_forums group by user_id) > 10
-    then
-        delete
-        from users_fav_forums
-        where user_id = new.user_id
-          and forum_id = new.forum_id;
-        raise exception 'Превышено максимальное количество избранных форумов';
-    end if;
+    select count(id) into cnt from board_game;
+    return cnt;
 end;
-$$ LANGUAGE plpgsql;
+$$ language plpgsql;
+
+--Проверить наличие дешевых игр
+create or replace function cheap_board_game() returns integer as $$
+declare
+    cnt integer;
+begin
+    select count(id) into cnt from board_game
+        join game_to_shop on board_game.id = game_to_shop.game_id
+                              where game_to_shop.price<500;
+    return cnt;
+end;
+$$ language plpgsql;
 
 --Триггер на максимальное количество любимых форумов (10)
 DROP TRIGGER IF EXISTS "CheckLovedForums" ON users_fav_forums;
@@ -20,8 +27,6 @@ CREATE TRIGGER CheckLovedForums
     ON users_fav_forums
     FOR EACH ROW
 EXECUTE PROCEDURE LovedForums();
-
-
 
 
 --Сделать магазины сети VIP
