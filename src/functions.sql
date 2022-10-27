@@ -20,3 +20,23 @@ CREATE TRIGGER CheckLovedForums
     ON users_fav_forums
     FOR EACH ROW
 EXECUTE PROCEDURE LovedForums();
+
+
+
+
+--Сделать магазины сети VIP
+CREATE OR REPLACE FUNCTION ChangeAllShopsStatus() RETURNS TRIGGER AS
+$$
+begin
+    update Shop set Shop_Type_ID = new.Shop_Type_ID where Name = new.Name;
+    return null;
+end;
+$$ LANGUAGE plpgsql;
+
+--Триггер на изменения магазина на VIP или обратно на стандарт
+DROP TRIGGER IF EXISTS "ShopUpdated" ON Shop;
+CREATE TRIGGER ShopUpdated
+    AFTER UPDATE
+    ON Shop
+    FOR EACH ROW WHEN ((OLD.Shop_Type_ID) IS DISTINCT FROM (NEW.Shop_Type_ID))
+EXECUTE PROCEDURE ChangeAllShopsStatus();
