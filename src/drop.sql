@@ -15,8 +15,6 @@ DROP TABLE "shop";
 
 DROP TABLE "shop_type";
 
-DROP TABLE "address";
-
 DROP TABLE "game_theme";
 
 DROP TABLE "carts_of_users";
