@@ -1,4 +1,4 @@
---Триггер на максимальное количество любимых форумов (10)
+--Все процедуры
 create or replace function LovedForums() returns trigger as
 $$
 begin
@@ -12,14 +12,13 @@ raise exception 'Превышено максимальное количеств�
 end if;
 end;
 $$ language plpgsql;
-
+--Триггер на максимальное количество любимых форумов (10)
 drop trigger if exists "CheckLovedForums" on users_fav_forums;
 create trigger CheckLovedForums
     after insert
     on users_fav_forums
     for each row
     execute procedure LovedForums();
-
 
 --Сделать магазины сети VIP
 CREATE OR REPLACE FUNCTION ChangeAllShopsStatus() RETURNS TRIGGER AS

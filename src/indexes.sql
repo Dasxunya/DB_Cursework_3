@@ -1,5 +1,4 @@
 --Индексы для ускорения select-запросов по несортированным атрибутам
-
 --Для еженедельных рассылок: SELECT mail FROM Users WHERE wants_mailing = true
 CREATE INDEX Mailing_Index ON Users (wants_mailing) WHERE wants_mailing = true;
 
@@ -7,7 +6,7 @@ CREATE INDEX Mailing_Index ON Users (wants_mailing) WHERE wants_mailing = true;
 CREATE INDEX Shop_Index ON Game_to_Shop (Game_ID);
 
 --Выбрать все адреса магазинов в городе покупателя
-CREATE INDEX City_Index ON Address (City);
+CREATE INDEX City_Index ON Shop using hash (Address);
 
 --Выбрать ВИП магазины для продвижения
 CREATE INDEX Vip_Shop_Index ON Shop (Shop_Type_ID) WHERE Shop_Type_ID = 2;
